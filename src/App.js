@@ -74,19 +74,24 @@ function App() {
         Search:
       </label>
       <hr />
-      {list.map((item) => (
-        <div className="card" key={item.objectID}>
-          <span>
-            <a href={item.url}>{item.title}</a>
-          </span>
-          <span>{item.author}</span>
-          <span>{item.num_comments}</span>
-          <span>{item.points}</span>
-        </div>
-      ))}
+
       <input id="search" type="text" />
+      <List />
     </div>
   );
+}
+
+function List() {
+  return list.map((item) => (
+    <div className="card" key={item.objectID}>
+      <span>
+        <a href={item.url}>{item.title}</a>
+      </span>
+      <span>{item.author}</span>
+      <span>{item.num_comments}</span>
+      <span>{item.points}</span>
+    </div>
+  ));
 }
 
 export default App;
