@@ -1,4 +1,5 @@
 import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 
 function App() {
@@ -21,24 +22,37 @@ function App() {
     },
   ];
 
-  const handleChange = (event) => {
-    console.log(event.target.value);
-  };
-
   return (
     <div>
       <h1>My Hacker Stories</h1>
-
-      <label htmlFor="search" type="text">
-        Search:
-      </label>
+      <Search />
       <hr />
-
-      <input id="search" type="text" onChange={handleChange} />
       <List list={stories} />
     </div>
   );
 }
+
+const Search = () => {
+  const [searchTerm, setSearchTerm] = React.useState("");
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  return (
+    <div>
+      <label htmlFor="search" type="text">
+        Search:
+      </label>
+
+      <input id="search" type="text" onChange={handleChange} />
+
+      <p>
+        Searching for <strong>{searchTerm}</strong>
+      </p>
+    </div>
+  );
+};
 
 const List = (props) => {
   console.log(props);
